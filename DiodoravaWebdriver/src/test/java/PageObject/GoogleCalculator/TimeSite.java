@@ -40,11 +40,6 @@ public class TimeSite extends BasePage {
         allTabs = new ArrayList<String>(driver.getWindowHandles());
         driver.switchTo().window(allTabs.get(1));
         driver.get(url);
-        /*String selectLinkOpeninNewTab = Keys.chord(Keys.CONTROL,Keys.RETURN);
-        driver.findElement(By.linkText(url)).sendKeys(selectLinkOpeninNewTab);
-        String selectLinkOpeninNewTab2 = Keys.chord(Keys.CONTROL,"t");
-        driver.findElement(By.linkText("https://10minutemail.com")).sendKeys(selectLinkOpeninNewTab2);
-*/
         return this;
     }
 
@@ -54,7 +49,7 @@ public class TimeSite extends BasePage {
         wait.until((ExpectedCondition<Boolean>) wdriver -> ((JavascriptExecutor) driver).executeScript(
                 "return document.readyState"
         ).equals("complete"));// не успевает появиться адрес
-          // не работает при входе во фрейм в CalculatorPage
+          // не работает при входе во фрейм в CalculatorPage????????????????????????
 
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOf(copyEmailAddress));
