@@ -14,7 +14,7 @@ public class FillEmailPage extends BasePage {
     private WebElement buttonSendEmail;
 
     public FillEmailPage switchAndUseEmailAddress(String emailAdress) {
-        driver.switchTo().window(TimeSite.allTabs.get(0));
+        switchTabByIndex(0);
         xpathFieldEmailAddress.click();
         xpathFieldEmailAddress.sendKeys(emailAdress);
         return this;

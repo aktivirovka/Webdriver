@@ -36,7 +36,7 @@ public class HardcoreTest extends BaseTest {
 
         FillEmailPage emailPage3 = resultPage.clickEmailEstimate();
         TimeSite timeSite = new TimeSite(driver);
-        String emailAddress = timeSite.openNewTab().copyEmailAddress();
+        String emailAddress = timeSite.openSiteInNewTab().copyEmailAddress();
         emailPage3.switchAndUseEmailAddress(emailAddress).clickButtonSendEmail();
         timeSite.getMessage();
 

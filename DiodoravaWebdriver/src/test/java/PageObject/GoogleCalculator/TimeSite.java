@@ -31,14 +31,11 @@ public class TimeSite extends BasePage {
     @FindBy(xpath = "//*[contains(text(), 'USD')]")
     private WebElement xpathTotalCost;
 
-    static JavascriptExecutor executor;
-    static ArrayList<String> allTabs;
 
-    public TimeSite openNewTab() {
-        executor = (JavascriptExecutor) driver;
-        executor.executeScript("window.open();");
-        allTabs = new ArrayList<String>(driver.getWindowHandles());
-        driver.switchTo().window(allTabs.get(1));
+
+    public TimeSite openSiteInNewTab() {
+        createNewTab();
+        switchTabByIndex(1);
         driver.get(url);
         return this;
     }
@@ -49,7 +46,7 @@ public class TimeSite extends BasePage {
         wait.until((ExpectedCondition<Boolean>) wdriver -> ((JavascriptExecutor) driver).executeScript(
                 "return document.readyState"
         ).equals("complete"));// не успевает появиться адрес
-          // не работает при входе во фрейм в CalculatorPage????????????????????????
+        // не работает при входе во фрейм в CalculatorPage????????????????????????
 
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOf(copyEmailAddress));
@@ -61,7 +58,7 @@ public class TimeSite extends BasePage {
 
 
     public void getMessage() {
-        driver.switchTo().window(allTabs.get(1));
+        switchTabByIndex(1);
         new WebDriverWait(driver, 30)
                 .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='small_message_icon']")));
         getMessage.click();
