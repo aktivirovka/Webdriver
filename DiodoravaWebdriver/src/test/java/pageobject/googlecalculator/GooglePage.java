@@ -1,6 +1,6 @@
-package PageObject.GoogleCalculator;
+package pageobject.googlecalculator;
 
-import PageObject.BasePage;
+import pageobject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;

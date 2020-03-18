@@ -1,6 +1,6 @@
-package Tests.Hardcore;
-import PageObject.GoogleCalculator.*;
-import Tests.BaseTest;
+package tests.hardcore;
+import pageobject.googlecalculator.*;
+import tests.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 

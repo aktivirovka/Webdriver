@@ -1,5 +1,5 @@
-package PageObject.GoogleCalculator;
-import PageObject.BasePage;
+package pageobject.googlecalculator;
+import pageobject.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 

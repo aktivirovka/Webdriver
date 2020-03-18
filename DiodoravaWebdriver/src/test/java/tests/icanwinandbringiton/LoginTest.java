@@ -1,9 +1,8 @@
-package Tests.ICanWinAndBringItOn;
+package tests.icanwinandbringiton;
 
-import PageObject.Pastebin.LoginPage;
-import PageObject.Pastebin.MainPage;
-import Tests.BaseTest;
-//import jdk.jfr.Description;
+import pageobject.pastebin.LoginPage;
+import pageobject.pastebin.MainPage;
+import tests.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -15,8 +14,7 @@ private String title = "how to gain dominance among developers";
 private String syntaxHighlighting = "Bash";
 
     @Test
-   // @Description(value = "ICanWin")
-    public void createNewPasteWithCodePasteExpirationAndTitle() {
+       public void createNewPasteWithCodePasteExpirationAndTitle() {
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goToPage();
         MainPage mainPage = loginPage.enterNewPasteCode("Hello from WebDriver")
@@ -24,14 +22,12 @@ private String syntaxHighlighting = "Bash";
 
     }
     @Test
-   // @Description(value = "BringItOn")
-    public void saveNewPasteWithCodePasteExpirationSyntaxTitleAndCheckThem(){
+      public void saveNewPasteWithCodePasteExpirationSyntaxTitleAndCheckThem(){
         LoginPage loginPage = new LoginPage(driver);
         loginPage.goToPage();
         MainPage mainPage = loginPage.enterNewPasteCode(pastedCode)
                 .chooseSyntaxHighlighting(syntaxHighlighting).choosePasteExpiration("10 Minutes")
                 .chooseTitle(title).clickCreateNewPast();
-
 
         Assert.assertTrue("Title is wrong", mainPage.isTitleTrue(title));
         Assert.assertTrue("Syntax is wrong", mainPage.isSyntaxTrue(syntaxHighlighting));

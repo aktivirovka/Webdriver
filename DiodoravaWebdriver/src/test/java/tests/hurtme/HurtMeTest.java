@@ -1,13 +1,11 @@
-package Tests.HurtMe;
-import PageObject.GoogleCalculator.CalculatorPage;
-import PageObject.GoogleCalculator.GooglePage;
-import PageObject.GoogleCalculator.ResultPage;
-import PageObject.GoogleCalculator.SearchResultsPage;
-import Tests.BaseTest;
+package tests.hurtme;
+import pageobject.googlecalculator.CalculatorPage;
+import pageobject.googlecalculator.GooglePage;
+import pageobject.googlecalculator.ResultPage;
+import pageobject.googlecalculator.SearchResultsPage;
+import tests.BaseTest;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.awt.*;
 
 public class HurtMeTest extends BaseTest {
     private String textToSearch = "Google Cloud Platform Pricing Calculator";
@@ -41,10 +39,6 @@ public class HurtMeTest extends BaseTest {
         Assert.assertTrue("Local SSD is wrong", resultPage.isLocalSSDTrue(textToLocalSSD));
         Assert.assertTrue("Commited usage is wrong", resultPage.isCommitedUsageTrue(textToCommitedUsage));
         Assert.assertTrue("Cost is wrong", resultPage.isCostTrue("1,082.77"));
-
-
-       //выйти из фрэйма??
-
 
     }
 }

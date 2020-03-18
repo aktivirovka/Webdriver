@@ -1,6 +1,6 @@
-package PageObject.GoogleCalculator;
+package pageobject.googlecalculator;
 
-import PageObject.BasePage;
+import pageobject.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.util.concurrent.TimeUnit;
 
 public class CalculatorPage extends BasePage {
@@ -16,7 +17,7 @@ public class CalculatorPage extends BasePage {
     }
 
     @FindBy(xpath = "//*[text()='Compute Engine'][1]")
-    WebElement xpathComputeEngine;
+    private WebElement xpathComputeEngine;
     @FindBy(xpath = "//*[@name='quantity']")
     private WebElement xpathNumberOfInstance;
     @FindBy(xpath = "//*[@name='label']")
@@ -46,24 +47,22 @@ public class CalculatorPage extends BasePage {
 
 
     public CalculatorPage activateComputeEngine() {
-        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);//????????????????????????????
+        driver.manage().timeouts().implicitlyWait(4, TimeUnit.SECONDS);
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(By.xpath("//section[@class='devsite-wrapper']//iframe")));
         driver.switchTo().frame("myFrame");
         new WebDriverWait(driver, 15).until(ExpectedConditions.elementToBeClickable(xpathComputeEngine));
         xpathComputeEngine.click();
-        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);//????????????????????????????
+        driver.manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
         return this;
     }
 
 
-    public CalculatorPage pasteNumberOfInstance(String number)  {
+    public CalculatorPage pasteNumberOfInstance(String number) {
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.elementToBeClickable(xpathNumberOfInstance));
         xpathNumberOfInstance.click();
-       /* Robot robot = new Robot();
-        robot.keyPress(KeyEvent.VK_4);*/
-         xpathNumberOfInstance.sendKeys(number);
+        xpathNumberOfInstance.sendKeys(number);
         return this;
     }
 

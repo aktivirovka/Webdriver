@@ -1,6 +1,6 @@
-package PageObject.GoogleCalculator;
+package pageobject.googlecalculator;
 
-import PageObject.BasePage;
+import pageobject.BasePage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedCondition;
@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.UnsupportedFlavorException;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class TimeSite extends BasePage {
     public TimeSite(WebDriver driver) {
@@ -21,17 +21,12 @@ public class TimeSite extends BasePage {
 
     @FindBy(className = "copy_icon")
     private WebElement copyEmailAddress;
-
-    @FindBy(xpath = "//span[@class='small_message_icon']")
+    @FindBy(xpath = "//*[@class='small_message_icon']")
     private WebElement getMessage;
-
     @FindBy(id = "mail_address")
     private WebElement mailAddress;
-
     @FindBy(xpath = "//*[contains(text(), 'USD')]")
     private WebElement xpathTotalCost;
-
-
 
     public TimeSite openSiteInNewTab() {
         createNewTab();
@@ -40,27 +35,23 @@ public class TimeSite extends BasePage {
         return this;
     }
 
-
     public String copyEmailAddress() throws IOException, UnsupportedFlavorException {
-        WebDriverWait wait = new WebDriverWait(driver, 15);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until((ExpectedCondition<Boolean>) wdriver -> ((JavascriptExecutor) driver).executeScript(
                 "return document.readyState"
-        ).equals("complete"));// не успевает появиться адрес
-        // не работает при входе во фрейм в CalculatorPage????????????????????????
+        ).equals("complete"));
 
         new WebDriverWait(driver, 15)
                 .until(ExpectedConditions.visibilityOf(copyEmailAddress));
-
         copyEmailAddress.click();
         return (String) Toolkit.getDefaultToolkit()
-                .getSystemClipboard().getData(DataFlavor.stringFlavor);//вставляет из буфера текст
+                .getSystemClipboard().getData(DataFlavor.stringFlavor);
     }
-
 
     public void getMessage() {
         switchTabByIndex(1);
         new WebDriverWait(driver, 30)
-                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//span[@class='small_message_icon']")));
+                .until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='small_message_icon']")));
         getMessage.click();
     }
 

@@ -1,6 +1,6 @@
-package PageObject.GoogleCalculator;
+package pageobject.googlecalculator;
 
-import PageObject.BasePage;
+import pageobject.BasePage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -23,10 +23,9 @@ public class ResultPage extends BasePage {
     @FindBy(xpath = "//*[@id ='compute']//*[contains(text(), 'Estimated Component Cost:')]")
     private WebElement xpathCost;
     @FindBy(id = "email_quote")
-    WebElement buttonEmailEstimate;
+    private WebElement buttonEmailEstimate;
 
     public FillEmailPage clickEmailEstimate() {
-        //  ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", buttonEmailEstimate);
         buttonEmailEstimate.click();
         return new FillEmailPage(driver);
     }
